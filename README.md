@@ -1,6 +1,8 @@
 # Super FSM
 
-> Classic FSM. Done right.
+### "The 'Super Loop + FSM' architecture, powering 90% of embedded systems, deserves higher standards!"
+
+Classic FSM. Done right.
 
 Super FSM elevates the switch-case state machine with 15 professional disciplines
 for production-grade embedded C — no RTOS required.
@@ -81,7 +83,7 @@ while (1) {
 Build and run the door example on any machine:
 
 ```bash
-git clone https://github.com/yourusername/super-fsm
+git clone https://github.com/erol-design/Super-FSM
 cd super-fsm
 make
 ./build/door_example
