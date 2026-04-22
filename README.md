@@ -53,7 +53,7 @@ disciplines that make it production-ready:
 | 13 | Transition table documented alongside the code |
 | 14 | HAL abstraction makes FSM testable on PC |
 | 15 | FSMs communicate via events, never read each other's state |
-
+| 16 | Use FSM_WAIT_MS() for sequential delays inside a state — the loop keeps running, other FSMs are not blocked.
 ---
 
 ## Why Super FSM?
