@@ -56,6 +56,47 @@ disciplines that make it production-ready:
 
 ---
 
+## Why Super FSM?
+
+If QP/C is too complex and bare switch-case is too fragile,
+Super FSM is the middle ground.
+
+**Simple to use.**
+No new concepts, no macros, no framework to learn.
+You already know switch-case — Super FSM just makes it disciplined.
+
+```c
+/* QP/C */
+return Q_TRAN(&Door_open);       /* what does Q_TRAN actually do? */
+
+/* Super FSM */
+transition(&ctx, ST_OPEN);       /* on_exit → state change → on_enter. that's it. */
+```
+
+**Easy to learn.**
+The entire framework fits in two files — `fsm.h` and `fsm.c`.
+Read them once and you understand everything. No hidden machinery.
+
+**Efficient.**
+Zero dynamic memory. No RTOS overhead. Runs on a Cortex-M0 with 4KB RAM.
+Every CPU cycle goes to your application, not the framework.
+
+**Transparent.**
+Every state transition is visible. Every event is traceable.
+When something breaks at 3am on a production device,
+you can read the log and know exactly what happened.
+
+```
+[EVENT: OPEN]   state: LOCKED
+  [warn] LOCKED: OPEN is invalid — attempt 2/3
+[EVENT: OPEN]   state: LOCKED
+  [warn] LOCKED: OPEN is invalid — attempt 3/3
+  [transition] LOCKED → ALARM
+  [enter] *** SIREN ACTIVE ***
+```
+
+---
+
 ## Quick Start
 
 ```c
@@ -83,7 +124,7 @@ while (1) {
 Build and run the door example on any machine:
 
 ```bash
-git clone https://github.com/erol-design/Super-FSM
+git clone https://github.com/yourusername/super-fsm
 cd super-fsm
 make
 ./build/door_example
@@ -139,5 +180,6 @@ MIT — use it, modify it, ship it.
 
 ---
 
+
 *Super FSM is the companion code for the book*
-*"Super Embedded System" by [Erol YILMAZ].*
+*"Super Embedded System" by Erol YILMAZ.*
